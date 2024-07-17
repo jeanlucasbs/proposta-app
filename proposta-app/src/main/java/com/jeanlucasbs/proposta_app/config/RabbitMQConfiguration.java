@@ -15,7 +15,10 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfiguration {
 
     @Value("${rabbitmq.propostapendente.exchange}")
-    private String exchange;
+    private String exchangePropostaPendente;
+
+    @Value("${rabbitmq.propostaconcluida.exchange}")
+    private String exchangePropostaConcluida;
 
     //Fila que referencia uma proposta pendente
     @Bean
@@ -50,8 +53,9 @@ public class RabbitMQConfiguration {
     }
 
     //Criar a exchange. Vai ser a mesma para os bindings
-    @Bean FanoutExchange criarFanoutExchangePropostaPendente(){
-        return ExchangeBuilder.fanoutExchange(exchange).build();
+    @Bean
+    FanoutExchange criarFanoutExchangePropostaPendente(){
+        return ExchangeBuilder.fanoutExchange(exchangePropostaPendente).build();
     }
 
    @Bean
@@ -62,6 +66,22 @@ public class RabbitMQConfiguration {
     @Bean
     public Binding criarBindingPropostaPendenteMSNotificacao(){
         return BindingBuilder.bind(criarFilaPropostaPendenteMsNotificao()).to(criarFanoutExchangePropostaPendente());
+    }
+
+    //Criar exchange para proposta concluida
+    @Bean
+    FanoutExchange criarFanoutExchangePropostaConcluida(){
+        return ExchangeBuilder.fanoutExchange(exchangePropostaConcluida).build();
+    }
+
+    @Bean
+    public Binding criarBindingPropostaConcluidaMSPropostaApp(){
+        return BindingBuilder.bind(criarFilaPropostaConcluidaMsProposta()).to(criarFanoutExchangePropostaConcluida());
+    }
+
+    @Bean
+    public Binding criarBindingPropostaConcluidaMSNotificacao(){
+        return BindingBuilder.bind(criarFilaPropostaConcluidaMsNotificao()).to(criarFanoutExchangePropostaConcluida());
     }
 
     @Bean
