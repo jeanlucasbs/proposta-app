@@ -23,7 +23,7 @@ public class RabbitMQConfiguration {
     //Fila que referencia uma proposta pendente
     @Bean
     public Queue criarFilaPropostaPendenteMsAnaliseCredito(){
-        return QueueBuilder.durable("proposta-pendente.ms-proposta").build();
+        return QueueBuilder.durable("proposta-pendente.ms-analise-credito").build();
     }
 
     //Fila que consume uma notificação para envio do consumer para notifica-lo da resposta daquela mensagem
