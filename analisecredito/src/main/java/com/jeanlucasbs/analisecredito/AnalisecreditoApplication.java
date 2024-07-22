@@ -16,10 +16,4 @@ public class AnalisecreditoApplication {
 		SpringApplication.run(AnalisecreditoApplication.class, args);
 	}
 
-	public CommandLineRunner commandLineRunner(){
-		return args -> {
-//			analiseCreditoService.analisar();
-		};
-	}
-
 }

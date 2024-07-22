@@ -3,9 +3,9 @@ package com.jeanlucasbs.analisecredito.listener;
 import com.jeanlucasbs.analisecredito.entities.Proposta;
 import com.jeanlucasbs.analisecredito.service.AnaliseCreditoService;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
 public class PropostaEmAnaliseListener {
 
     private final AnaliseCreditoService analiseCreditoService;
@@ -15,7 +15,7 @@ public class PropostaEmAnaliseListener {
     }
 
     @RabbitListener(queues = "${rabbitmq.queue.proposta.pendente}")
-    private void propostaEmAnalise(Proposta proposta){
+    public void propostaEmAnalise(Proposta proposta){
         analiseCreditoService.analisar(proposta);
 
     }

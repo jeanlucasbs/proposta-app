@@ -45,8 +45,6 @@ public class PropostaService {
             proposta.setIntegrada(false);
             repository.save(proposta);
         }
-
-
     }
 
     public List<PropostaResponseDTO> obterProposta() {

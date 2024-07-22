@@ -12,14 +12,11 @@ import java.util.List;
 @Service
 public class AnaliseCreditoService {
 
+    @Autowired
     private List<CalcularPonto> calcularPontoList;
 
-    public AnaliseCreditoService(List<CalcularPonto> calcularPontoList) {
-        this.calcularPontoList = calcularPontoList;
-    }
-
     @Autowired
-    NotificacaoRabbitMQService notificacaoRabbitMQService;
+    private NotificacaoRabbitMQService notificacaoRabbitMQService;
 
     @Value("${rabbitmq.propostaconcluida.exchange}")
     private String exchangePropostaConcluida;

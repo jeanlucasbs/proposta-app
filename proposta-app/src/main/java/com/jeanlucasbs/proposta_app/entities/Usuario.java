@@ -32,56 +32,5 @@ public class Usuario {
     @JsonBackReference
     private Proposta proposta;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
-
-    public String getCPF() {
-        return CPF;
-    }
-
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public Double getRenda() {
-        return renda;
-    }
-
-    public void setRenda(Double renda) {
-        this.renda = renda;
-    }
-
-    public Proposta getProposta() {
-        return proposta;
-    }
-
-    public void setProposta(Proposta proposta) {
-        this.proposta = proposta;
-    }
 }
 
